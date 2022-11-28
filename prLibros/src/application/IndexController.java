@@ -73,7 +73,16 @@ public class IndexController {
 	
 	@FXML
 	public void anadirLibro(ActionEvent event) {
+		if(txtPaginas.getText().isBlank()||cbEditorial.getSelectionModel().isEmpty()||txtTitulo.getText().isBlank()||txtAutor.getText().isBlank()) {
 		
+				Alert alerta = new Alert(AlertType.WARNING);
+				alerta.setTitle("Error al insertar");
+				alerta.setHeaderText("Se han dejado campos en blanco");
+				alerta.setContentText("Por favor, introduzca de nuevo los campos del libro");
+				alerta.showAndWait();
+				
+			}
+		else {
 		if (esNumero(txtPaginas.getText())) {
 			Libro l = new Libro(
 					txtTitulo.getText(),
@@ -95,12 +104,24 @@ public class IndexController {
 			alerta.setHeaderText("No se ha introducido un número en las páginas");
 			alerta.setContentText("Por favor, introduzca un número en las páginas");
 			alerta.showAndWait();
-		}
+		}}
+	
 	}
+
 	
 	@FXML
 	public void borrarLibro(ActionEvent event) { 
-		System.out.println("Borrando un libro");
+		try{
+			int indiceSeleccionado = tableLibros.getSelectionModel().getSelectedIndex();
+		
+		tableLibros.getItems().remove(indiceSeleccionado);
+		}catch(IndexOutOfBoundsException e){
+            Alert alerta = new Alert(AlertType.ERROR);
+            alerta.setTitle("No has seleccionado ninguna tabla");
+            alerta.setHeaderText("Ninguna tabla seleccionada");
+            alerta.setContentText("Porfavor,selecciona una tabla para borrarla");
+            alerta.showAndWait();
+        }
 	}
 	
 	public boolean esNumero (String s) {
@@ -111,4 +132,6 @@ public class IndexController {
 			return false;
 		}
 	}
+	
+	
 }
