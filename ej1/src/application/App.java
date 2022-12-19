@@ -39,7 +39,7 @@ public class App  extends Application {
 
 		
 		});
-		Scene scene = new Scene(panel, 300, 200);
+		Scene scene = new Scene(panel, 300, 300);
 		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Ejercicio 3");
