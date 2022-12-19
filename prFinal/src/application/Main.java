@@ -15,9 +15,9 @@ public class Main extends Application {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("Index.fxml"));
 			Scene scene = new Scene(root,700,500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.getIcons().add(new Image("/application/H.png"));
-			primaryStage.setScene(scene);
+			primaryStage.getIcons().add(new Image("/application/icono2.png"));
 			primaryStage.setTitle("Productos en la tienda");
+			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
